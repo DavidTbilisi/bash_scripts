@@ -1,0 +1,17 @@
+#!/usr/bin/bash
+
+usage() { echo "Usage: $0 [-b 1] [-s 1]" 1>&2; exit 1; }
+while getopts "bs" arg; do
+  case $arg in
+    b)
+      curl -s https://www.rico.ge/en | grep -Eo "[0-9]\.[0-9]{4}" | awk 'NR==1{print "Buy GEL "$1}'
+      ;;
+    s)
+      curl -s https://www.rico.ge/en | grep -Eo "[0-9]\.[0-9]{4}" | awk 'NR==2{print "Sell GEL "$1}'
+      ;;
+  esac
+done
+
+if [ -b "${b}" ] || [ -s "${s}" ]; then
+    usage
+fi
