@@ -3,13 +3,20 @@ usage()
 {
     echo "usage: <command> options:<d|i|f>"
 }
-
+# data definition
 while getopts "di:f:" arg; do
   case $arg in
     d)
-    
+
     # grep "usb" ?
-      lsblk -x size 
+    echo
+    echo "Drive:"
+      lsblk | grep -v '^loop'
+    echo "___________________________________________"
+    echo
+    echo "ISO files list below:"
+    echo "___________________________________________"
+      find ~/Downloads -type f -iname "*.iso"
       ;;
     i)
     # input file = if
@@ -26,9 +33,9 @@ while getopts "di:f:" arg; do
 done
 
 
-# sudo dd bs=4M if=/home/$USER/Downloads/$iso of=/dev/$flashdrive status=progress oflag=sync
+# sudo dd bs=1M if=/home/$USER/Downloads/$iso of=/dev/$flashdrive status=progress oflag=sync
 if [ $OPTIND -eq 2 ]; then exit 0; fi
 if [ $OPTIND -eq 1 ]; then usage; exit 0; fi
-echo "sudo dd bs=4M if=/home/$USER/Downloads/$iso of=/dev/${flashdrive} status=progress conv=noerror oflag=sync"
+echo "sudo dd bs=1M if=/home/$USER/Downloads/$iso of=/dev/${flashdrive} status=progress conv=noerror oflag=sync"
 
 exit 0;
