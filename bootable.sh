@@ -29,6 +29,6 @@ done
 # sudo dd bs=4M if=/home/$USER/Downloads/$iso of=/dev/$flashdrive status=progress oflag=sync
 if [ $OPTIND -eq 2 ]; then exit 0; fi
 if [ $OPTIND -eq 1 ]; then usage; exit 0; fi
-echo "sudo dd bs=4M if=/home/$USER/Downloads/$iso of=/dev/${flashdrive} status=progress oflag=sync"
+echo "sudo dd bs=4M if=/home/$USER/Downloads/$iso of=/dev/${flashdrive} status=progress conv=noerror oflag=sync"
 
 exit 0;
