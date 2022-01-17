@@ -2,6 +2,9 @@
 usage()
 {
     echo "usage: <command> options:<d|i|f>"
+    echo "./bootable.sh -d shows information about disks and iso files"
+    echo "./bootable.sh -i some.iso -f flashdrive_name <- that gives you command to run in terminal"
+    
 }
 # data definition
 while getopts "di:f:" arg; do
