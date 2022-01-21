@@ -1,6 +1,19 @@
 #!/usr/bin/bash
 
-usage() { echo "Usage: $0 [-b 1] [-s 1]" 1>&2; exit 1; }
+usage() { 
+  echo 
+  echo "Usage: $0 [ -b ] [ -s ]"; 
+  echo 
+  echo "Params:"; 
+  echo "  -b - Buy"; 
+  echo "  -s - Sell"; 
+  echo "Examples:"; 
+  echo "  $0 -bs"; 
+  echo "  $0 -b"; 
+  echo "  $0 -s"; 
+  exit 1; 
+  
+  }
 while getopts "bs" arg; do
   case $arg in
     b)
@@ -12,6 +25,7 @@ while getopts "bs" arg; do
   esac
 done
 
-if [ -b "${b}" ] || [ -s "${s}" ]; then
+if [ $# -eq 0 ]; then
     usage
+    exit 1
 fi
