@@ -1,0 +1,13 @@
+#!/usr/bin/bash
+
+
+while getopts "ud" arg; do
+  case $arg in
+    u)
+     rclone sync -P /home/David/Documents/Obsidian gd:obsidian 
+      ;;
+    d)
+     rclone sync -P gd:obsidian /home/David/Documents/Obsidian
+      ;;
+  esac
+done
